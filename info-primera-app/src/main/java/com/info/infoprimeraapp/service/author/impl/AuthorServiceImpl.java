@@ -2,10 +2,10 @@
 
 ANTES DE IMPLEMENTAR BASE DE DATOS SE UTILIZABA COMO METODO DE GUARDADO
 
-package com.info.infoprimeraapp.service.impl;
+package com.info.infoprimeraapp.service.author.impl;
 
 import com.info.infoprimeraapp.domain.Author;
-import com.info.infoprimeraapp.service.AuthorService;
+import com.info.infoprimeraapp.service.author.AuthorService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

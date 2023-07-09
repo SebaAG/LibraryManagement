@@ -3,10 +3,10 @@
 ANTES DE IMPLEMENTAR BASE DE DATOS SE UTILIZABA COMO METODO DE GUARDADO
 
 
-package com.info.infoprimeraapp.service.impl;
+package com.info.infoprimeraapp.service.author.impl;
 
 import com.info.infoprimeraapp.domain.Book;
-import com.info.infoprimeraapp.service.BookService;
+import com.info.infoprimeraapp.service.book.BookService;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
