@@ -3,10 +3,7 @@ package com.info.infoprimeraapp.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
@@ -16,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Publisher {
 
     @Id
@@ -35,8 +33,8 @@ public class Publisher {
     private String country;
 
     @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
-    private String telNumber;
+    private String phone;
 
     @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
-    private String webSite;
+    private String web;
 }

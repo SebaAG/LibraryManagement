@@ -51,7 +51,7 @@ public class ReviewController {
 
         if(review.isEmpty()){
             log.info("Review not found");
-            return "Book not found";
+            return "Review not found";
         }else {
             log.info("Review updated");
             return "/api/v1/review/"+review.get().getId();
