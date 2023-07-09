@@ -13,3 +13,7 @@ Este proyecto es una aplicación de administración de libros desarrollada en Ja
 - **Hibernate y JPA**: Se emplea el framework de persistencia Hibernate junto con la API de Persistencia de Java (JPA) para mapear los objetos de la aplicación con las tablas de la base de datos. Esto facilita la interacción con la base de datos y agiliza el desarrollo.
 
 - **Spring Boot**: Se utiliza Spring Boot como el framework de desarrollo de aplicaciones Java, lo que facilita la configuración inicial y proporciona un entorno de ejecución simplificado. También aprovecha las capacidades de inyección de dependencias y gestión transaccional de Spring.
+
+- **OpenCSV**: La dependencia opencsv permite trabajar con archivos CSV en la aplicación. Proporciona métodos para leer y escribir datos en formato CSV, lo que puede ser útil para importar y exportar información relacionada con los libros desde y hacia archivos CSV.
+
+- **Lombok**: La dependencia lombok simplifica la escritura de código Java al reducir la cantidad de código boilerplate necesario para clases, como getters, setters, constructores y métodos equals y hashCode. Esto mejora la legibilidad y reduce el tiempo de desarrollo.
