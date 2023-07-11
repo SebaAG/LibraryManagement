@@ -1,8 +1,7 @@
 package com.info.infoprimeraapp.model;
 
-import com.info.infoprimeraapp.bootstrap.LocalDateConverter;
 import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvCustomBindByName;
+import com.opencsv.bean.CsvDate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +28,11 @@ public class ReviewCsvRecord {
     @CsvBindByName(column = "rate")
     private BigDecimal rate;
 
-    @CsvCustomBindByName(column = "date", converter = LocalDateConverter.class)
+    @CsvDate("dd/MM/yyyy")
     private LocalDate date;
 }
+
+// @CsvCustomBindByName(column = "date", converter = LocalDateConverter.class)
+// la clase LocalDateConverter proporciona la lógica necesaria para convertir las fechas en formato de cadena
+// especificado por el patrón "dd/MM/yyyy" a objetos LocalDate durante el proceso de lectura o escritura de
+// archivos CSV con OpenCSV

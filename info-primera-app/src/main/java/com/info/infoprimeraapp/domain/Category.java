@@ -22,6 +22,6 @@ public class Category {
     @Id
     private UUID id;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String categoryName;
 }

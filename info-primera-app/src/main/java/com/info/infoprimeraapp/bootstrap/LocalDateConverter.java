@@ -23,3 +23,6 @@ public class LocalDateConverter extends AbstractBeanField<String, LocalDate> {
         }
     }
 }
+
+// SE UTILIZABA LA CLASE PARA REALIZAR LA LOGICA PARA EL CAMBIO DE FORMATO EN LA FECHA
+// DEL ARCHIVO CSV QUE SE IMPORTABA

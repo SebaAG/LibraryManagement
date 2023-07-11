@@ -1,10 +1,10 @@
 package com.info.infoprimeraapp.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 @Setter
@@ -16,20 +16,19 @@ import java.util.UUID;
 public class Book {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name="UUID",strategy ="org.hibernate.id.UUIDGenerator")
-    @JdbcTypeCode(SqlTypes.CHAR)
+    @UuidGenerator
     @Column(length = 36,columnDefinition = "varchar(36)",updatable = false,nullable = false)
     private UUID uuid;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String title;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String author;
 
     @Column(unique = true)
     private String isbn;
 
     private int numberPage;
+
 }

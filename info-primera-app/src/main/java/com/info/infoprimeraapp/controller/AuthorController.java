@@ -1,7 +1,7 @@
 package com.info.infoprimeraapp.controller;
 
 import com.info.infoprimeraapp.domain.Author;
-import com.info.infoprimeraapp.service.author.AuthorService;
+import com.info.infoprimeraapp.service.AuthorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

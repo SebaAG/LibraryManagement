@@ -23,16 +23,16 @@ public class Review {
     @UuidGenerator
     private UUID id;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String title;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String bookName;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String content;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private BigDecimal rate;
 
     @Column(length = 40,columnDefinition = "varchar(40)",nullable = false)

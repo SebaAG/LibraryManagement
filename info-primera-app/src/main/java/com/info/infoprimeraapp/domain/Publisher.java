@@ -20,21 +20,21 @@ public class Publisher {
     @UuidGenerator
     private UUID id;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String publisherName;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String address;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String city;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String country;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String phone;
 
-    @Column(length = 255,columnDefinition = "varchar(255)", nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String web;
 }

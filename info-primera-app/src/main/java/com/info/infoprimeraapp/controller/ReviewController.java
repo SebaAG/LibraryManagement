@@ -1,7 +1,7 @@
 package com.info.infoprimeraapp.controller;
 
 import com.info.infoprimeraapp.domain.Review;
-import com.info.infoprimeraapp.service.review.ReviewService;
+import com.info.infoprimeraapp.service.ReviewService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

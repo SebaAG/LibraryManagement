@@ -6,20 +6,21 @@ import com.info.infoprimeraapp.domain.Review;
 import com.info.infoprimeraapp.model.BookCsvRecord;
 import com.info.infoprimeraapp.model.PublisherCsvRecord;
 import com.info.infoprimeraapp.model.ReviewCsvRecord;
-import com.info.infoprimeraapp.repository.book.BookRepository;
-import com.info.infoprimeraapp.repository.publisher.PublisherRepository;
-import com.info.infoprimeraapp.repository.review.ReviewRepository;
-import com.info.infoprimeraapp.service.csv.book.BookCsvService;
-import com.info.infoprimeraapp.service.csv.publisher.PublisherCsvService;
-import com.info.infoprimeraapp.service.csv.review.ReviewCsvService;
+import com.info.infoprimeraapp.repository.BookRepository;
+import com.info.infoprimeraapp.repository.PublisherRepository;
+import com.info.infoprimeraapp.repository.ReviewRepository;
+import com.info.infoprimeraapp.service.csv.BookCsvService;
+import com.info.infoprimeraapp.service.csv.PublisherCsvService;
+import com.info.infoprimeraapp.service.csv.ReviewCsvService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ResourceUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,9 +45,10 @@ public class BootstrapData implements CommandLineRunner {
         loadReviewData();
     }
 
-    private void loadBookData() throws FileNotFoundException {
+    private void loadBookData() throws IOException {
         if (bookRepository.count() < 100) {
-            File file = ResourceUtils.getFile("classpath:csvdata/book_data.csv");
+            Resource resource = new ClassPathResource("csvdata/review_data.csv");
+            File file = resource.getFile();
             List<BookCsvRecord> bookCsvRecordList = bookCsvService.convertCSV(file);
 
             if (!bookCsvRecordList.isEmpty()) {
@@ -66,9 +68,10 @@ public class BootstrapData implements CommandLineRunner {
         }
     }
 
-    private void loadPublisherData() throws FileNotFoundException {
+    private void loadPublisherData() throws IOException {
         if (publisherRepository.count() < 100) {
-            File file = ResourceUtils.getFile("classpath:csvdata/publisher_data.csv");
+            Resource resource = new ClassPathResource("csvdata/review_data.csv");
+            File file = resource.getFile();
             List<PublisherCsvRecord> publisherCsvRecordList = publisherCsvService.convertCSV(file);
 
             if (!publisherCsvRecordList.isEmpty()) {
@@ -91,9 +94,10 @@ public class BootstrapData implements CommandLineRunner {
         }
     }
 
-    private void loadReviewData() throws FileNotFoundException {
+    private void loadReviewData() throws IOException {
         if (reviewRepository.count() < 100) {
-            File file = ResourceUtils.getFile("classpath:csvdata/review_data.csv");
+            Resource resource = new ClassPathResource("csvdata/review_data.csv");
+            File file = resource.getFile();
             List<ReviewCsvRecord> reviewCsvRecordList = reviewCsvService.convertCSV(file);
 
             if (!reviewCsvRecordList.isEmpty()) {

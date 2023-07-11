@@ -1,7 +1,7 @@
 package com.info.infoprimeraapp.controller;
 
 import com.info.infoprimeraapp.domain.Category;
-import com.info.infoprimeraapp.service.category.CategoryService;
+import com.info.infoprimeraapp.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
