@@ -14,7 +14,7 @@ import java.util.UUID;
 @Primary
 @Service
 @AllArgsConstructor
-public class PublisherServiceSQL implements PublisherService {
+public class PublisherSQLService implements PublisherService {
     private final PublisherRepository pr;
 
     @Override

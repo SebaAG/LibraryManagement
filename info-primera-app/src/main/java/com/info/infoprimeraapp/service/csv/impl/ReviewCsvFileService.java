@@ -11,14 +11,8 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class ReviewCsvServiceFile implements ReviewCsvService {
-    private final CsvServiceCommonFile<ReviewCsvRecord> csvServiceCommonFile;
-
-    public ReviewCsvServiceFile(CsvServiceCommonFile<ReviewCsvRecord> csvServiceCommonFile) {
-        this.csvServiceCommonFile = csvServiceCommonFile;
-    }
-
+public class ReviewCsvFileService implements ReviewCsvService {
     public List<ReviewCsvRecord> convertCSV(File file) throws FileNotFoundException {
-        return csvServiceCommonFile.convertCSV(file, ReviewCsvRecord.class);
+        return CsvCommonFileService.convertCSV(file, ReviewCsvRecord.class);
     }
 }

@@ -13,7 +13,7 @@ import java.util.Optional;
 @Primary
 @Service
 @AllArgsConstructor
-public class AuthorServiceSQL implements AuthorService {
+public class AuthorSQLService implements AuthorService {
     private final AuthorRepository authorRepository;
 
     @Override

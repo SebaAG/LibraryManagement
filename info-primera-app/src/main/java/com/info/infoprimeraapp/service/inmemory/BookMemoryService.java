@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class BookServiceMemory implements BookService {
+public class BookMemoryService implements BookService {
     Map<UUID,Book> bookMap;
 
-    public BookServiceMemory() {
+    public BookMemoryService() {
         bookMap = new HashMap<>();
 
         Book book = new Book();

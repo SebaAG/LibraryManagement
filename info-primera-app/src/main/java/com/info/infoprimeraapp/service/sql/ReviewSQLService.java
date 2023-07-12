@@ -14,7 +14,7 @@ import java.util.UUID;
 @Primary
 @Service
 @AllArgsConstructor
-public class ReviewServiceSQL implements ReviewService {
+public class ReviewSQLService implements ReviewService {
 
     private final ReviewRepository reviewRepository;
 

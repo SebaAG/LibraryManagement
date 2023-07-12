@@ -14,7 +14,7 @@ import java.util.UUID;
 @Primary
 @Service
 @AllArgsConstructor
-public class CategoryServiceSQL implements CategoryService {
+public class CategorySQLService implements CategoryService {
     private CategoryRepository cr;
 
     public List<Category> getAllCategories() {

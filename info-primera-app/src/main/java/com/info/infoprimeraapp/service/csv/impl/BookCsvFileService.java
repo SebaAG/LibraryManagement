@@ -12,14 +12,9 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class BookCsvServiceFile implements BookCsvService {
-    private final CsvServiceCommonFile<BookCsvRecord> csvServiceCommonFile;
-
-    public BookCsvServiceFile(CsvServiceCommonFile<BookCsvRecord> csvServiceCommonFile) {
-        this.csvServiceCommonFile = csvServiceCommonFile;
-    }
+public class BookCsvFileService implements BookCsvService {
 
     public List<BookCsvRecord> convertCSV(File file) throws FileNotFoundException {
-        return csvServiceCommonFile.convertCSV(file, BookCsvRecord.class);
+        return CsvCommonFileService.convertCSV(file, BookCsvRecord.class);
     }
 }

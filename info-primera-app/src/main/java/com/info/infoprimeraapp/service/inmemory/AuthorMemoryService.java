@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AuthorServiceMemory implements AuthorService {
+public class AuthorMemoryService implements AuthorService {
     private final List<Author> authors;
 
-    public AuthorServiceMemory() {
+    public AuthorMemoryService() {
         this.authors = new ArrayList<>();
     }
     @Override

@@ -14,7 +14,7 @@ import java.util.UUID;
 @Primary
 @Service
 @AllArgsConstructor
-public class BookServiceSQL implements BookService {
+public class BookSQLService implements BookService {
 
     private final BookRepository bookRepository;
 
