@@ -5,10 +5,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-public interface AuthorRepository extends CrudRepository<Author, Long> {
+public interface AuthorRepository extends CrudRepository<Author, UUID> {
     //Query Methods
-    Optional<Author> findByNameEqualsIgnoreCase(String name);
     Optional<Author> findByNameAndLastNameEqualsIgnoreCase(String name, String lastName);
 }

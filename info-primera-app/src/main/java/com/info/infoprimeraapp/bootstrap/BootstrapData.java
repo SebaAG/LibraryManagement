@@ -1,12 +1,12 @@
 package com.info.infoprimeraapp.bootstrap;
 
-import com.info.infoprimeraapp.domain.Book;
+import com.info.infoprimeraapp.domain.Category;
 import com.info.infoprimeraapp.domain.Publisher;
 import com.info.infoprimeraapp.domain.Review;
-import com.info.infoprimeraapp.model.BookCsvRecord;
-import com.info.infoprimeraapp.model.PublisherCsvRecord;
-import com.info.infoprimeraapp.model.ReviewCsvRecord;
+import com.info.infoprimeraapp.model.csv.PublisherCsvRecord;
+import com.info.infoprimeraapp.model.csv.ReviewCsvRecord;
 import com.info.infoprimeraapp.repository.BookRepository;
+import com.info.infoprimeraapp.repository.CategoryRepository;
 import com.info.infoprimeraapp.repository.PublisherRepository;
 import com.info.infoprimeraapp.repository.ReviewRepository;
 import com.info.infoprimeraapp.service.csv.BookCsvService;
@@ -14,6 +14,7 @@ import com.info.infoprimeraapp.service.csv.PublisherCsvService;
 import com.info.infoprimeraapp.service.csv.ReviewCsvService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -35,17 +36,21 @@ public class BootstrapData implements CommandLineRunner {
     private final PublisherCsvService publisherCsvService;
     private final ReviewRepository reviewRepository;
     private final ReviewCsvService reviewCsvService;
+    @Autowired
+    private CategoryRepository categoryRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
         log.info("Running BootstrapData");
 
-        loadBookData();
+       // loadBookData();
         loadPublisherData();
         loadReviewData();
+        loadCategoryData();
     }
 
-    private void loadBookData() throws IOException {
+ /*   private void loadBookData() throws IOException {
         if (bookRepository.count() < 100) {
             Resource resource = new ClassPathResource("csvdata/review_data.csv");
             File file = resource.getFile();
@@ -66,11 +71,11 @@ public class BootstrapData implements CommandLineRunner {
                 }
             }
         }
-    }
+    } */
 
     private void loadPublisherData() throws IOException {
         if (publisherRepository.count() < 100) {
-            Resource resource = new ClassPathResource("csvdata/review_data.csv");
+            Resource resource = new ClassPathResource("csvdata/publisher_data.csv");
             File file = resource.getFile();
             List<PublisherCsvRecord> publisherCsvRecordList = publisherCsvService.convertCSV(file);
 
@@ -115,6 +120,27 @@ public class BootstrapData implements CommandLineRunner {
                     );
                 }
             }
+        }
+    }
+
+    private void loadCategoryData() {
+        if (categoryRepository.count() == 0) {
+            Category category1  = Category.builder()
+                    .id(UUID.randomUUID())
+                    .categoryName("Ficcion")
+                    .build();
+
+            Category category2 = Category.builder()
+                    .id(UUID.randomUUID())
+                    .categoryName("Misterio")
+                    .build();
+
+            Category category3 = Category.builder()
+                    .id(UUID.randomUUID())
+                    .categoryName("Romance")
+                    .build();
+
+            categoryRepository.saveAll(List.of(category1,category2,category3));
         }
     }
 }

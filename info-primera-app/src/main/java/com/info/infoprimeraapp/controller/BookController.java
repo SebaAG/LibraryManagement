@@ -1,10 +1,15 @@
 package com.info.infoprimeraapp.controller;
 
 import com.info.infoprimeraapp.domain.Book;
+import com.info.infoprimeraapp.exceptions.NotFoundException;
+import com.info.infoprimeraapp.model.dto.BookDTO;
+import com.info.infoprimeraapp.model.dto.response.BookResponseDTO;
 import com.info.infoprimeraapp.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +17,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController // Anotación a nivel Clase
-@RequestMapping("/api/v1/book") // Todas las dependencias comparten mismo URI
+@RequestMapping("/api/v1/book") // Todos los endpoints comparten mismo URI
 @Slf4j
 public class BookController {
 
@@ -24,40 +29,47 @@ public class BookController {
     }
 
     @GetMapping()
-    public List<Book> getAllBooks(){
-        log.info("Requesting books");
+    public List<BookResponseDTO> getAllBooks(@RequestParam(required = false,name = "nameBook") String nameBook){
+        log.info("Se esta haciendo una consulta por los libros");
         return bookService.getAllBooks();
     }
 
     @PostMapping()
-    public Book createBook(@RequestBody Book book){
+    public ResponseEntity createBook(@RequestBody BookDTO book) throws NotFoundException {
         log.info("Creating a new book");
-        return bookService.createBook(book);
+        Book bookCreated = bookService.createBook(book);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location","/api/v1/book/"+bookCreated.getUuid());
+
+        return new ResponseEntity(headers,HttpStatus.CREATED);
+
     }
 
     @PutMapping("{idBook}")
-    public String updateBook(@PathVariable(value = "idBook")UUID idBook,@RequestBody Book bookUpdated){
-        Optional<Book> book = bookService.updateBook(idBook,bookUpdated);
+    public ResponseEntity updateBook(@PathVariable(value = "idBook")UUID idBook,@RequestBody BookDTO bookUpdated)
+            throws NotFoundException {
+        Optional<BookDTO> book = bookService.updateBook(idBook,bookUpdated);
 
         if(book.isEmpty()){
             log.info("Book not found");
-            return "Book not found";
+            throw new NotFoundException();
         }else {
             log.info("Book updated");
-            return "/api/v1/book/"+book.get().getUuid();
+            return  new ResponseEntity(HttpStatus.NO_CONTENT);
         }
     }
 
     @DeleteMapping("{UUID}")
-    public String deleteBook(@PathVariable(value = "UUID") UUID idBook) {
+    public ResponseEntity deleteBook(@PathVariable(value = "UUID") UUID idBook) throws NotFoundException {
         boolean deleted = bookService.deleteBook(idBook);
 
         if (deleted) {
             log.info("Book deleted");
-            return "Book deleted";
+            throw new NotFoundException();
         } else {
             log.info("Book not found");
-            return "Book not found";
+            throw new NotFoundException();
         }
     }
 

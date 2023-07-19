@@ -1,4 +1,4 @@
-package com.info.infoprimeraapp.model;
+package com.info.infoprimeraapp.model.csv;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
@@ -28,6 +28,7 @@ public class ReviewCsvRecord {
     @CsvBindByName(column = "rate")
     private BigDecimal rate;
 
+    @CsvBindByName(column = "date")
     @CsvDate("dd/MM/yyyy")
     private LocalDate date;
 }

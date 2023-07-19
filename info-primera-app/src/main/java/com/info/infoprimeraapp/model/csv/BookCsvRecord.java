@@ -1,4 +1,4 @@
-package com.info.infoprimeraapp.model;
+package com.info.infoprimeraapp.model.csv;
 
 
 import com.opencsv.bean.CsvBindByName;

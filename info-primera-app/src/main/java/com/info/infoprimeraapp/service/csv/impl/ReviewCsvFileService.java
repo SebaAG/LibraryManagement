@@ -1,6 +1,6 @@
 package com.info.infoprimeraapp.service.csv.impl;
 
-import com.info.infoprimeraapp.model.ReviewCsvRecord;
+import com.info.infoprimeraapp.model.csv.ReviewCsvRecord;
 import com.info.infoprimeraapp.service.csv.ReviewCsvService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

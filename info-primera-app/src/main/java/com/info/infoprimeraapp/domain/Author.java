@@ -1,60 +1,42 @@
 package com.info.infoprimeraapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
-
-
-import java.time.LocalDate;
-import java.util.Objects;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 public class Author {
 
     @Id
-    @JsonIgnore
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name="UUID",strategy="org.hibernate.id.UUIDGenerator")
+    @JdbcTypeCode(SqlTypes.CHAR)
+    @Column(length = 36,columnDefinition = "varchar(36)",updatable = false,nullable = false)
+    private UUID uuid;
 
     @Column(length = 40,columnDefinition = "varchar(40)", nullable = false)
     private String name;
 
-    @Column(length = 40,columnDefinition = "varchar(40)",nullable = false)
+    @Column(length = 40,columnDefinition = "varchar(50)",nullable = false)
     private String lastName;
 
-    @Column(length = 40,columnDefinition = "varchar(40)",nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate birth;
+    private LocalDateTime birth;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    @OneToMany(mappedBy = "author")
+    private List<Book> books = new ArrayList<>();
 
-        Author author = (Author) o;
 
-        if (id != author.id) return false;
-        if (!Objects.equals(name, author.name)) return false;
-        if (!Objects.equals(lastName, author.lastName)) return false;
-        return Objects.equals(birth, author.birth);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (birth != null ? birth.hashCode() : 0);
-        return result;
-    }
 }

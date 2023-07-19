@@ -1,6 +1,6 @@
 package com.info.infoprimeraapp.service.csv;
 
-import com.info.infoprimeraapp.model.PublisherCsvRecord;
+import com.info.infoprimeraapp.model.csv.PublisherCsvRecord;
 
 import java.io.File;
 import java.io.FileNotFoundException;
